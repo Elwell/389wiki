@@ -13,11 +13,11 @@ The following describes what we would like to get done in various releases of Di
 ## Red Hat Directory Server 11
 ------------------------------
 
-RHDS 11 refers to the 389-ds-base-1.4.x series in RHEL 8/CentOS 8. For example, the 389-ds-base-1.3.x releases were used in Red Hat Directory Server 10 on RHEL 7.
+RHDS 11 refers to the 389-ds-base-1.4.x series in RHEL 8/CentOS 8. 
 
 
-### What is new in 389-ds-base-1.4.1 (RHDS 11)
----------------------------------------------
+### What was new in 389-ds-base-1.4.1 (RHDS 11)
+-----------------------------------------------
 
 ### Enhanced Password Policy
 
@@ -37,8 +37,6 @@ We added the following new syntax checks:
 
 - **User attribute list** - A custom list of attributes to compare the password to in the user's entry.  These are typically **uid, mail, cn**, etc...
 
-<br>
-
 ### New CLI tools
 
 Instead of having to use *ldapmodify* to configure the server or use the old perl/shell scripts, we now have a new python CLI tool set.  
@@ -46,7 +44,7 @@ Instead of having to use *ldapmodify* to configure the server or use the old per
 
 #### dscreate
 
-Install an instance of directory server.  You can use an INF file for "silent" installations, or there is an *interactive* mode which promotes you for the minimum required settings.
+Install an instance of directory server.  You can use an INF file for "silent" installations, or there is an *interactive* mode which prompts you for the minimum required settings.
 
 #### dsctl
 
@@ -74,31 +72,29 @@ This tool handles all the online configuration of the server.  Many of the majo
 
 This is the identity/database content tool.  This is used to manage a variety of database users and groups
 
-<br>
 
 ### New Web UI (Cockpit plugin)
 
 We have a new web UI Cockpit plugin.  Now you can manage the server in Cockpit via a new plugin for the Directory Server.  Setting up things like Replication, databases, and monitoring have been greatly improved since the old Java console.
 
-<br>
 
 ## Red Hat Directory Server 12
 
-RHDS 12 is based of off the 389-ds-base-2.x series.  RHDS 12.0 (389-ds-base-2.0) maps to RHEL/Centos 9.0, RHDS 12.1 (389-ds-base-2.1) to RHEL/Centos 9.1, etc
+RHDS 12 is based off the 389-ds-base-2.x series.  RHDS 12.0 (389-ds-base-2.0) maps to RHEL/Centos 9.0, RHDS 12.1 (389-ds-base-2.1) to RHEL/Centos 9.1, etc
 
 Most RFE's can be found and described on the [Design Doc Page](../design/design.html#389-directory-server-2x)
 
 ### Initial Phase of LMDB Support
 
-We will be replacing the internal backend database library (libdb, or sleepycat DB) with LMDB.  This will not be fully supported until 389-ds-base-3.0, but you can enable it in 389-ds-base-2.3 and play around with it, but it's not fully ready for production.  Currently we see improvement with some operatons, but worse performance with others.  Some of the potential performance improvements that can come from LMDB require rewriting the database transaction model, which can not be done until libdb/sleepycat is completely removed from teh code.  This can not happen until 389-ds-base-3.x ...
+We will be replacing the internal backend database library (libdb, or sleepycat DB) with LMDB.  This will not be fully supported until 389-ds-base-3.0, but you can enable it in 389-ds-base-2.3 and play around with it, but it's not fully ready for production.  Currently we see improvement with some operatons, but worse performance with others.  Some of the potential performance improvements that can come from LMDB require rewriting the database transaction model, which can not be done until libdb/sleepycat is completely removed from the code.  This can not happen until 389-ds-base-3.x ...
 
 ### Container Support
 
-389-ds-base-2.x does work in Openshift and Docker.  See this [link](../howto/howto-deploy-389ds-on-openshift.html) for information on how to get it working
+389-ds-base-2.x works in Openshift and Docker.  See this [link](../howto/howto-deploy-389ds-on-openshift.html) for information on how to get it working
 
 ### LDAP Editor/Browser in UI
 
-Database conentg (users and grouips) can now be managed inthe UI.  Also we are continuously backporting these improvements to older versions like  389-ds-base-1.4.3 (Centos/RHEL)
+Database content (users and groups) can now be managed in the UI.  Also we are continuously backporting these improvements to older versions like 389-ds-base-1.4.3 (Centos/RHEL)
 
 ### Concurrent Connection Improvements
 
@@ -106,10 +102,8 @@ Improvements are currently being made to improve performance when handling 1000'
 
 ### New Security Audit Log
 
-There is a new log written in JSON that tracks BIND operations (failed and successful, account lockout/password policy, TCP errors, etc.  The JSON format allows easy parsing and handing off to other tools like Splunk for processing.  For more infor see the [Design Page](../design/security-audit-log-design.html)
+There is a new log written in JSON that tracks BIND operations (failed and successful, account lockout/password policy, TCP errors, etc.  The JSON format allows easy parsing and handing off to other tools like Splunk for processing.  For more info see the [Design Page](../design/security-audit-log-design.html)
 
-
-<br>
 
 ## What is the future
 ---------------------------------------------
